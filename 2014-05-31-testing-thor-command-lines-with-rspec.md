@@ -34,3 +34,7 @@ You can include this method in your `spec_helper.rb` and use it like so:
 This will capture the stdout you would get from running your command and store it in `output`, which you can test against. Hooray!
 
 You might be tempted (as I was) to test all of your commands using the `capture` method, but one important caveat to remember is that `let` is always lazy-loaded. This means that if you're testing something other than stdout (which is most likely the case if you expect a command to run quietly), the method won't ever be called. In those cases, I call the method in a `before` block, which will always be evaluated.
+
+---
+
+Note: rspec does include some matchers for dealing with output, but it doesn't seem to play nice with escape codes - I ended up preferring the solution in this post.
